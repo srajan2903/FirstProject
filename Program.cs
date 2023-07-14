@@ -52,10 +52,52 @@ namespace ConsoleApp15
 
             Console.WriteLine("Total number of elements in the ArrayList are \t" + fruits.Count);
             PrintArrayList(fruits);
-            Console.WriteLine("Array List contains 'date' " + Search(fruits, "date"));
-            InsertAtPosition(fruits, "fig", 1);
-            RemoveElement(fruits, "banana");
-            PrintArrayList(fruits);
+            Console.WriteLine("enter search to search for a fruit");
+            Console.WriteLine("Enter add to add a fruit");
+            Console.WriteLine("Enter remove a fruit");
+            Console.WriteLine("Enter quit to exit the program");
+
+            string userInput = Console.ReadLine().ToLower();
+            while(userInput != "quit")
+            {
+                switch (userInput)
+                {
+                    case "search":
+                        Console.WriteLine("Enter fruit you want to search for");
+                        string searchFruit = Console.ReadLine().ToLower();
+                        bool isFound = Search(fruits, searchFruit);
+                        Console.WriteLine("Fruit Found " + isFound);
+                        break;
+                    case "add":
+                        Console.WriteLine("Enter the fruit you want to add");
+                        string addFruit = Console.ReadLine().ToLower();
+                        InsertAtPosition(fruits, addFruit, fruits.Count);
+                        Console.WriteLine("Fruit added successfully");
+                        break;
+                    case "remove":
+                        Console.WriteLine("Enter the fruit you want to remove");
+                        string removeFruit = Console.ReadLine().ToLower();      
+                        RemoveElement(fruits, removeFruit);
+                        Console.WriteLine("Fruit removed successfully");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
+                Console.WriteLine("Total number of elements in the ArrayList are \t" + fruits.Count);
+                PrintArrayList(fruits);
+                Console.WriteLine("enter search to search for a fruit");
+                Console.WriteLine("Enter add to add a fruit");
+                Console.WriteLine("Enter remove a fruit");
+                Console.WriteLine("Enter quit to exit the program");
+
+            }
+
+            //Console.WriteLine("Array List contains 'date' " + Search(fruits, "date"));
+            //InsertAtPosition(fruits, "fig", 1);
+            //RemoveElement(fruits, "banana");
+            //PrintArrayList(fruits);
+
             Console.ReadKey();
         }
         static void PrintArrayList(ArrayList list)
